@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('Overview');
   const tabs = ['Overview', 'Portfolio', 'Experience', 'Media'];
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Top header section */}
+   
       <header className="bg-black border-b border-gray-800 flex items-center p-3">
-      <div className="flex items-center mr-8">
-        <div className="bg-white text-black rounded-full p-1 mr-2 flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+        <div className="flex items-center mr-8">
+          <div className="bg-white text-black rounded-full p-1 mr-2 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <span className="font-bold text-sm text-white">Vertxlabs, Inc</span>
         </div>
-        <span className="font-bold text-sm text-white">Vertxlabs, Inc</span>
-      </div>
-      
-      <div className="flex flex-1 items-center justify-between">
-        <button className="text-sm font-medium text-white">Profile</button>
-        <div className="flex items-center space-x-6">
-          <button className="text-sm text-gray-400">Activity</button>
-          <button className="text-sm text-white">Log out</button>
+        
+        <div className="flex flex-1 items-center justify-between">
+          <button className="text-sm font-medium text-white">Profile</button>
+          <div className="flex items-center space-x-6">
+            <Link to="/analytics" className="text-sm text-gray-400 hover:text-white">Activity</Link>
+            <button className="text-sm text-white">Log out</button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
       
       <div className="flex flex-1">
         {/* Sidebar with menu items */}
@@ -36,10 +38,13 @@ const ProfilePage = () => {
               <div className="w-6 h-6 mr-3 flex items-center justify-center">
                 <div className="w-5 h-5 rounded-full bg-gray-400"></div>
               </div>
-              <span className="text-gray-500 hidden md:inline text-sm">Dashboard</span>
+              <span className="text-white hidden md:inline text-sm">Dashboard</span>
             </div>
             
-            <div className="flex items-center py-3 px-4">
+            <div 
+              className="flex items-center py-3 px-4 cursor-pointer hover:bg-gray-900"
+              onClick={() => navigate('/analytics')}
+            >
               <div className="w-6 h-6 mr-3 flex items-center justify-center">
                 <div className="w-5 h-5 rounded-full bg-gray-400"></div>
               </div>
@@ -50,7 +55,7 @@ const ProfilePage = () => {
               <div className="w-6 h-6 mr-3 flex items-center justify-center">
                 <div className="w-5 h-5 rounded-full bg-green-500"></div>
               </div>
-              <span className="text-white hidden md:inline text-sm">Connect</span>
+              <span className="text-gray-500 hidden md:inline text-sm">Connect</span>
             </div>
           </div>
           

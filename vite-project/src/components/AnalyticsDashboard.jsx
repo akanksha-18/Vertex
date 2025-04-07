@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ArrowRight, Menu, X } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 // SVG Flag Components
 const IndiaFlag = () => (
@@ -322,6 +323,8 @@ export default function AnalyticsDashboard() {
   const [insightFilter, setInsightFilter] = useState('Visitors');
   const [demographicsFilter, setDemographicsFilter] = useState('Visitors');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  
 
   // Options for dropdowns
   const visitorOptions = ['Visitors', 'Unique Visitors', 'New Visitors', 'Returning Visitors'];
@@ -376,7 +379,9 @@ export default function AnalyticsDashboard() {
         </div>
         
         <div className="pt-4">
-          <div className="flex items-center px-4 py-2 text-gray-400 hover:bg-gray-900 cursor-pointer">
+          <div className="flex items-center px-4 py-2 text-gray-400 hover:bg-gray-900 cursor-pointer"
+          onClick={() => navigate('/')}
+          >
             <span>Dashboard</span>
           </div>
           <div className="flex items-center px-4 py-2 bg-gray-900 text-white cursor-pointer">
